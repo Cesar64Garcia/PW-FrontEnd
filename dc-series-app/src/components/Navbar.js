@@ -38,10 +38,10 @@ class CustomNavbar extends React.Component {
 							<NavLink to="/" className="nav-link cool-link">Inicio</NavLink>
 						</NavItem>
 						<NavItem>
-							<NavLink to="/Series" className="nav-link cool-link">Series</NavLink>
+							<NavLink to="/series" className="nav-link cool-link">Series</NavLink>
 						</NavItem>
 						<NavItem>
-							<NavLink to="/Agregar" className="nav-link cool-link">Agregar</NavLink>
+							<NavLink to="/agregar" className="nav-link cool-link">Agregar</NavLink>
 						</NavItem>
 					</Nav>
 				</Collapse>

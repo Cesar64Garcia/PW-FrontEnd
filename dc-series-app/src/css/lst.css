@@ -1,0 +1,67 @@
+.special-btn{
+	background-color: rgba(0,76,153,0.8);
+	color: rgba(255,255,255,1);
+}
+
+.special-btn:hover{
+	background-color: rgba(0,76,153,1);
+	color: rgba(255,255,255,1);
+}
+
+.special-col{
+	position: relative;
+	padding-top: 15px;
+	padding-bottom: 15px;
+	z-index: 1;
+}
+
+.lst-img-wrapper{
+	position: relative;
+	padding-top: 133.33%;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+}
+
+.lst-img-wrapper:hover .lst-img-intern,
+.lst-img-wrapper:hover .delete-image{
+	opacity: 1;
+	visibility: visible;
+}
+
+.lst-img-intern{
+	position: absolute;
+	top: 0;
+	width: 100%;
+	z-index: 2;
+	background-color: rgba(0,0,0,0.2);
+	height: 100%;
+	opacity: 0;
+	visibility: hidden;
+	cursor: pointer;
+}
+
+.delete-btn{
+	position: absolute;
+	width: 20px;
+	height: auto;
+	margin: 15px;
+	right: 0;
+	cursor: pointer;
+}
+
+.season-title{
+	position: absolute;
+    bottom: 0;
+	width: 100%;
+	padding: 15px 0;
+	color: rgba(255,255,255,1);
+	background-color: rgba(0,0,0,0.8);
+	height: auto;
+    cursor: pointer;
+    text-align: center;
+}
+
+.season-title:hover{
+	text-shadow: 0px 0px 5px rgba(255, 255, 255, 1);
+}

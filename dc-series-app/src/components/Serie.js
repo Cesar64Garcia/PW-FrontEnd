@@ -33,19 +33,18 @@ class Serie extends Component{
         return this.props.serie ? (
             <section className="container section2">
         		<div className="text-center">
-					<h1 className="align-middle title custom-title"><img className="logo" src={Logo} alt="logo"/>{this.state.serie}</h1>
+					<h1 className="align-middle title custom-title">
+                        <img className="logo" src={Logo} alt="logo"/>
+                        {this.state.serie}
+                    </h1>
         		</div>
         		<div className="addSerie">
 					<Form onSubmit={this.handleSubmit}>
 						<div className="row">
-							<div className="special-col col-lg-3 col-md-4 col-sm-6 col-6">
+							<div className="special-col col-lg-3 col-md-4 col-sm-6 col-12">
 								<div className="lst-img-wrapper" style={styles}></div>
-                                <br/>
-                                <FormGroup className="text-center">
-                                    <Button id="submit" type="submit" color="primary">Actualizar</Button>
-                                </FormGroup>
 							</div>
-                            <div class="special-col col-lg-9 col-md-8 col-sm-6 col-6">
+                            <div className="special-col col-lg-9 col-md-8 col-sm-6 col-12">
                                 <FormGroup>
                                     <Label for="serie">Serie</Label>
                                     <select className="form-control" id="serie" onChange={this.handleOnChange} value={this.state.serie}>
@@ -71,6 +70,9 @@ class Serie extends Component{
                                 <FormGroup>
                                     <Label for="body">Descripción</Label>
                                     <textarea  className="form-control" id="body" placeholder="..." rows="3" onChange={this.handleOnChange} value={this.state.body}></textarea>
+                                </FormGroup>
+                                <FormGroup className="text-left">
+                                    <Button id="submit" type="submit" color="primary">Actualizar</Button>
                                 </FormGroup>
                             </div>
 						</div>

@@ -28,7 +28,11 @@ class Series extends Component{
 									</Link>
 								</div>
 								<Link to={'/' + serie.id}>
-									<div className="text-center season-title">{serie.temporada}</div>
+									<div className="text-center season-title">
+										{serie.serie}
+										<br/>
+										{serie.temporada}
+									</div>
 								</Link>
 							</div>
 						</div>

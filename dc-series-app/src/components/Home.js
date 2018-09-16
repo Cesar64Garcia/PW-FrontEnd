@@ -16,13 +16,10 @@ const Home = () => {
 				</div>
 				<article id="article-1" className="container article-text">
 					<p>
-						The Flash es una serie de televisión estadounidense desarrollada por Greg Berlanti, Andrew Kreisberg y Geoff Johns para la cadena The CW. El episodio piloto fue dirigido por David Nutter. La historia se basa en el 
-						superhéroe de DC Comics, Flash, específicamente en Barry Allen, el segundo individuo en tomar dicha identidad. Se trata además de un spin-off de Arrow, serie de televisión basada en Flecha Verde, por lo cual comparten el
-						mismo universo de ficción.​ Fue estrenada el 7 de octubre de 2014.​ El 21 de octubre de 2014, The CW ordenó una temporada completa de veintitrés episodios.
+						El Arrowverso​ es un universo de ficción compartido creado por Greg Berlanti, Marc Guggenheim, Andrew Kreisberg y Geoff Johns que es ambientado por las series de televisión producidas por DC Entertainment y basadas en los personajes que aparecen en las publicaciones de DC Comics.
 					</p>	
 					<p>
-						El 2 de abril de 2018, se anunció la renovación de la serie para una quinta temporada,​ que se estrenará el 9 de 
-						octubre de 2018.
+					Este universo compartido incluye cinco series de televisión de acción en vivo, así como una serie web animada emitidas por la cadena The CW, y es establecido mediante crossovers entre puntos argumentales comunes, miembros del reparto y personajes. Arrow, basada en la historia de Flecha Verde fue la primera serie en estrenarse,​ dando paso a The Flash, un spin-off centrado en la historia de Barry Allen.3 Posteriormente, fue anunciado el lanzamiento de Vixen​ y Legends of Tomorrow, una serie derivada conjuntamente de Arrow y The Flash.
 					</p>
 				</article>
 			</section>

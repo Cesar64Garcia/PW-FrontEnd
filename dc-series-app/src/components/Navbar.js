@@ -25,8 +25,9 @@ class CustomNavbar extends React.Component {
 	}
 	
 	render(){
+		let classNav = 'all-transition custom-nav' + (this.props.location.pathname === '/' ? '' : '-dark')
 		return(
-			<Navbar id="navbar" className="all-transition custom-nav-dark custom-nav-dark" fixed="top" dark expand="md">
+			<Navbar id="navbar" className={classNav} fixed="top" dark expand="md">
 				<NavLink to="/" className="navbar-brand">
 					<img className="logo" src={Logo} alt="logo"/>
 					<span className="align-middle">DC Series</span>

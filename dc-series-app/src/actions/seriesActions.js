@@ -12,7 +12,7 @@ export const addSerie = (serie) => ({
 
 export const deleteSerie = (id) => {
     return {
-        type: 'DELETE_SERIE',
+        type: 'DELETE_SEASON',
         id
     }
 }

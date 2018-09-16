@@ -17,12 +17,6 @@ class AgregarSerie extends Component{
 		this.setState({
 			[e.target.id]: e.target.value
 		})
-
-		console.log(this.state)
-	}
-
-	handleOnSelectFile = (e) => {
-		this.handleOnChange(e);
 	}
 
 	handleSubmit = (e) => {
@@ -35,14 +29,14 @@ class AgregarSerie extends Component{
 	render(){
 		return (
 			<section className="container section2">
-        <div className="text-center">
+        		<div className="text-center">
 					<h1 className="align-middle title custom-title"><img className="logo" src={Logo} alt="logo"/>Agregar</h1>
-        </div>
-        <div className="addSerie">
+        		</div>
+        		<div className="addSerie">
 					<Form onSubmit={this.handleSubmit}>
 						<FormGroup>
 							<Label for="serie">Serie</Label>
-							<select className="form-control" id="serie" onChange={this.handleOnChange} value={this.state.value}>
+							<select className="form-control" id="serie" onChange={this.handleOnChange} value={this.state.serie.value}>
 								<option value='The Flash'>The Flash</option>
 								<option value='Arrow'>Arrow</option>
 								<option value='Supergirl'>Supergirl</option>
@@ -70,8 +64,8 @@ class AgregarSerie extends Component{
 							<Button id="submit" type="submit" color="primary">Guardar</Button>
 						</FormGroup>
 					</Form>
-        </div>
-    	</section>
+        		</div>
+    		</section>
 		)
 	}	
 }

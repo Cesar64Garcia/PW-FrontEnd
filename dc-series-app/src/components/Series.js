@@ -13,7 +13,6 @@ class Series extends Component{
 	
 	render() {
 		const {series} = this.props ;
-		console.log(series)
 
 		const seriesList = series.length ? (
 			series.map(serie => {

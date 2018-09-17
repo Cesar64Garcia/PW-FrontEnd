@@ -1,15 +1,17 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
+import {deleteSerie} from '../actions/seriesActions';
 import DeleteImg from '../images/delete.png';
 import UpdateImg from '../images/edit.png';
 import Logo from '../images/logo2.png';
 import '../css/lst.css'
 
 class Series extends Component{
-	handleClick = (e) => {
-		console.log('Delete trigered')
-	}
+	handleDelete = (id) => {
+		this.props.deleteSerie(id)
+        this.props.history.push('./Series')
+    }
 	
 	render() {
 		const {series} = this.props ;
@@ -22,7 +24,7 @@ class Series extends Component{
 						<div className="lst-img-wrapper" style={styles}>
 							<div className="lst-img-intern all-transition">
 								<div className="text-right">
-									<img src={DeleteImg} alt="delete-btn" className="delete-btn all-transition" onClick={this.handleClick}/>
+									<img src={DeleteImg} alt="delete-btn" className="delete-btn all-transition" onClick={() => {this.handleDelete(serie.id)}}/>
 									<Link to={'/' + serie.id}>
 										<img src={UpdateImg} alt="update-btn" className="update-btn all-transition"/>
 									</Link>
@@ -46,7 +48,7 @@ class Series extends Component{
 		return (
 			<section className="container section2">
 				<div className="text-center">
-					<h1 className="align-middle title custom-title">
+					<h1 className="align-middle custom-title dc-title">
 						<img className="logo" src={Logo} alt="logo"/>
 						Listado
 					</h1>
@@ -65,4 +67,12 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps)(Series)
+const mapDispatchToProps = (dispatch) => {
+    return {
+        deleteSerie: (id) => {
+            dispatch(deleteSerie(id))
+        }
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Series)

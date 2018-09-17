@@ -2,6 +2,10 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 import Logo from '../images/logo2.png';
+import LogoArrow from '../images/arrow.png';
+import LogoFlash from '../images/flash.png';
+import LogoSuper from '../images/supergirl.png'
+import LogoBatwoman from '../images/batwoman.png'
 
 class Serie extends Component{  
     state = {
@@ -28,13 +32,37 @@ class Serie extends Component{
 	}
 
     render() {
-		let styles = {backgroundImage: 'url(' + this.state.portada + ')'}
+        let styles = {backgroundImage: 'url(' + this.state.portada + ')'}
+        let imgLogo, classLogo
+        
+        switch (this.state.serie) {
+            case 'Arrow':
+                imgLogo = <img className="logo" src={LogoArrow} alt="logo"/>
+                classLogo = 'arrow-title';
+                break;
+            case 'The Flash':
+                imgLogo = <img className="logo" src={LogoFlash} alt="logo"/>
+                classLogo = 'flash-title';
+                break;
+            case 'Supergirl':
+                imgLogo = <img className="logo" src={LogoSuper} alt="logo"/>
+                classLogo = 'supergirl-title';
+                break;
+            case 'Batwoman':
+                imgLogo = <img className="logo" src={LogoBatwoman} alt="logo"/>
+                classLogo = 'batwoman-title';
+                break;
+            default:
+                imgLogo = <img className="logo" src={Logo} alt="logo"/>
+                classLogo = 'dc-title';
+                break;
+        }
 
         return this.props.serie ? (
             <section className="container section2">
         		<div className="text-center">
-					<h1 className="align-middle title custom-title">
-                        <img className="logo" src={Logo} alt="logo"/>
+					<h1 className={'align-middle custom-title ' + classLogo}>
+                        {imgLogo}
                         {this.state.serie}
                     </h1>
         		</div>

@@ -9,7 +9,7 @@ const Home = () => {
 			</section>
 			<section id="section-1" className="section">
 				<div className="text-center">
-					<h1 className="align-middle title custom-title">
+					<h1 className="align-middle dc-title custom-title">
 						<img className="logo" src={Logo} alt="logo"/>
 						Descripción
 					</h1>

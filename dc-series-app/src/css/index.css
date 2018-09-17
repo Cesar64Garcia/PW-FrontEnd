@@ -198,17 +198,40 @@ background-color: rgb(0, 0, 0, 0.9)
 }
 
 .custom-title{
-	border-bottom: 2px solid rgb(0,120,240);
 	display:inline; 
 	font-weight: bold;
 	padding: 7px 25px 7px 25px;
+}
+
+.dc-title{
+	border-bottom: 2px solid rgb(0,120,240);
+	border-top: 2px solid rgb(0,120,240);
 	color: rgb(0,120,240);
 }
 
-.title{
-	border-top: 2px solid rgb(0,120,240);
+.arrow-title{
+	border-bottom: 2px solid rgb(15,157,69);
+	border-top: 2px solid rgb(15,157,69);
+	color: rgb(15,157,69);	
 }
 
+.flash-title{
+	border-bottom: 2px solid rgb(198,43,41);
+	border-top: 2px solid rgb(198,43,41);
+	color: rgb(198,43,41);	
+}
+
+.supergirl-title{
+	border-bottom: 2px solid rgb(254,0,0);
+	border-top: 2px solid rgb(254,0,0);
+	color: rgb(254,0,0);	
+}
+
+.batwoman-title{
+	border-bottom: 2px solid rgb(218,0,0);
+	border-top: 2px solid rgb(218,0,0);
+	color: rgb(218,0,0);	
+}
 
 .article-text{
 	padding-top: 30px;

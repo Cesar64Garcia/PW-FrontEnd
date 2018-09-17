@@ -5,11 +5,27 @@ import {deleteSerie} from '../actions/seriesActions';
 import DeleteImg from '../images/delete.png';
 import UpdateImg from '../images/edit.png';
 import Logo from '../images/logo2.png';
+import { confirmAlert } from 'react-confirm-alert'; 
+import 'react-confirm-alert/src/react-confirm-alert.css' // Import css
+
 import '../css/lst.css'
 
 class Series extends Component{
 	handleDelete = (id) => {
-		this.props.deleteSerie(id)
+		confirmAlert({
+			title: 'Alerta',
+			message: '¿Esta seguro de eliminar?',
+			buttons: [
+			  {
+				label: 'Si',
+				onClick: () => this.props.deleteSerie(id)
+			  },
+			  {
+				label: 'No'
+			  }
+			]
+		})
+		//this.props.deleteSerie(id)
         this.props.history.push('./Series')
     }
 	

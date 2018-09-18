@@ -24,6 +24,7 @@ const rootReducer = (state = [], action) => {
                 series: newSeries
             }
         default:
+            localStorage.clear()
             return state;
     }
 }

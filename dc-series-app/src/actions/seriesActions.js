@@ -16,3 +16,10 @@ export const deleteSerie = (id) => {
         id
     }
 }
+
+export const updateSerie = (serie) => {
+    return {
+        type: 'UPDATE_SEASON',
+        serie: serie
+    }
+}

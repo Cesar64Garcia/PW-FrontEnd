@@ -23,8 +23,14 @@ const rootReducer = (state = [], action) => {
                 ...state,
                 series: newSeries
             }
+        case 'UPDATE_SEASON':
+            newSeries = state.series.filter(serie => serie.id !== action.serie.id)
+            newSeries.push(action.serie)
+            return {
+                ...state,
+                series: newSeries
+            }
         default:
-            localStorage.clear()
             return state;
     }
 }

@@ -1,14 +1,18 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
+import {updateSerie} from '../actions/seriesActions';
 import Logo from '../images/logo2.png';
 import LogoArrow from '../images/arrow.png';
 import LogoFlash from '../images/flash.png';
 import LogoSuper from '../images/supergirl.png'
 import LogoBatwoman from '../images/batwoman.png'
+import { confirmAlert } from 'react-confirm-alert'; 
+import 'react-confirm-alert/src/react-confirm-alert.css' // Import css
 
 class Serie extends Component{  
     state = {
+        id: this.props.serie.id,
         serie: this.props.serie.serie,
 		temporada: this.props.serie.temporada,
 		portada: this.props.serie.portada,
@@ -27,9 +31,26 @@ class Serie extends Component{
 	handleSubmit = (e) => {
 		e.preventDefault();
 		console.log(this.state)
-		this.props.addSerie(this.state);
-		this.props.history.push('./Series')
-	}
+        this.props.updateSerie(this.state);
+        
+        confirmAlert({
+			title: 'Actualización',
+			message: 'La actualización se realizo correctamente',
+			buttons: [
+                {
+                    label: 'Ok',
+                },
+                {
+                    label: 'Regresar',
+                    onClick: () => this.props.history.push('./Series')
+                }
+			]
+		})
+    }
+    
+    handleReturn = (e) => {
+        this.props.history.push('./Series')
+    }
 
     render() {
         let styles = {backgroundImage: 'url(' + this.state.portada + ')'}
@@ -100,7 +121,8 @@ class Serie extends Component{
                                     <textarea  className="form-control" id="body" placeholder="..." rows="3" onChange={this.handleOnChange} value={this.state.body}></textarea>
                                 </FormGroup>
                                 <FormGroup className="text-left">
-                                    <Button id="submit" type="submit" color="primary">Actualizar</Button>
+                                    <Button id="return" type="" color="secondary" onClick={this.handleReturn}>Regresar</Button>
+                                    <Button id="submit" className="secondary-buttom" type="submit" color="primary">Actualizar</Button>
                                 </FormGroup>
                             </div>
 						</div>
@@ -122,4 +144,12 @@ const mapStateToProps = (state, ownProps) => {
     }
 }
 
-export default connect(mapStateToProps)(Serie)
+const mapDispatchToProps = (dispatch) => {
+	return {
+		updateSerie: (serie) => {
+			dispatch(updateSerie(serie))
+		}
+	}
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(Serie)

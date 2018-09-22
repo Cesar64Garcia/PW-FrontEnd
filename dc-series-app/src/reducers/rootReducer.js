@@ -23,12 +23,15 @@ const rootReducer = (state = [], action) => {
                 ...state,
                 series: newSeries
             }
-        case 'UPDATE_SEASON':
-            newSeries = state.series.filter(serie => serie.id !== action.serie.id)
-            newSeries.push(action.serie)
-            return {
-                ...state,
-                series: newSeries
+        case 'UPDATE_SEASON': {
+                newSeries = state.series
+                let index
+                index = newSeries.map(serie => serie.id).indexOf(action.serie.id);
+                newSeries[index] = action.serie
+                return {
+                    ...state,
+                    series: newSeries
+                }
             }
         default:
             return state;

@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
-import {updateSerie} from '../actions/seriesActions';
+import {updateSerie, deleteSerie} from '../actions/seriesActions';
 import Logo from '../images/logo2.png';
 import LogoArrow from '../images/arrow.png';
 import LogoFlash from '../images/flash.png';
@@ -24,13 +24,10 @@ class Serie extends Component{
 		this.setState({
 			[e.target.id]: e.target.value
 		})
-
-		console.log(this.state)
 	}
 
 	handleSubmit = (e) => {
 		e.preventDefault();
-		console.log(this.state)
         this.props.updateSerie(this.state);
         
         confirmAlert({
@@ -50,6 +47,25 @@ class Serie extends Component{
     
     handleReturn = (e) => {
         this.props.history.push('./Series')
+    }
+
+    handleDelete = (e) => {
+        confirmAlert({
+			title: 'Alerta',
+			message: '¿Esta seguro de eliminar?',
+			buttons: [
+                {
+                    label: 'Si',
+                    onClick: () => {
+                        this.props.deleteSerie(this.state.id)
+                        this.props.history.push('./Series')
+                    }
+                },
+                {
+                    label: 'No'
+                }
+			]
+        })
     }
 
     render() {
@@ -121,7 +137,8 @@ class Serie extends Component{
                                     <textarea  className="form-control" id="body" placeholder="..." rows="3" onChange={this.handleOnChange} value={this.state.body}></textarea>
                                 </FormGroup>
                                 <FormGroup className="text-left">
-                                    <Button id="return" type="" color="secondary" onClick={this.handleReturn}>Regresar</Button>
+                                    <Button id="return" color="secondary" onClick={this.handleReturn}>Regresar</Button>
+                                    <Button id="delete" className="secondary-buttom" color="danger" onClick={this.handleDelete}>Eliminar</Button>
                                     <Button id="submit" className="secondary-buttom" type="submit" color="primary">Actualizar</Button>
                                 </FormGroup>
                             </div>
@@ -148,7 +165,10 @@ const mapDispatchToProps = (dispatch) => {
 	return {
 		updateSerie: (serie) => {
 			dispatch(updateSerie(serie))
-		}
+        },
+        deleteSerie: (id) => {
+            dispatch(deleteSerie(id))
+        }
 	}
 }
 

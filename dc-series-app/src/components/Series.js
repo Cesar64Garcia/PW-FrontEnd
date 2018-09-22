@@ -25,7 +25,7 @@ class Series extends Component{
 			  }
 			]
 		})
-		//this.props.deleteSerie(id)
+		
         this.props.history.push('./Series')
     }
 	

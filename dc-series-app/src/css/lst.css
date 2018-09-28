@@ -23,10 +23,13 @@
 	background-position: center;
 }
 
-.lst-img-wrapper:hover .lst-img-intern,
-.lst-img-wrapper:hover .delete-image{
+.lst-img-wrapper:hover .lst-img-intern{
 	opacity: 1;
 	visibility: visible;
+}
+
+.lst-img-wrapper:hover .season-title{
+	text-shadow: 0px 0px 5px rgba(255, 255, 255, 1);
 }
 
 .lst-img-intern{
@@ -39,26 +42,6 @@
 	opacity: 0;
 	visibility: hidden;
 }
-
-.delete-btn{
-	position: absolute;
-	width: 20px;
-	height: auto;
-	margin: 15px;
-	right: 0;
-	cursor: pointer;
-}
-
-.update-btn{
-	position: absolute;
-	width: 20px;
-	height: auto;
-	margin: 15px;
-	right: 0;
-	top: 35px;
-	cursor: pointer;
-}
-
 .season-title{
 	position: absolute;
     bottom: 0;
@@ -69,10 +52,6 @@
 	height: auto;
     cursor: pointer;
     text-align: center;
-}
-
-.season-title:hover{
-	text-shadow: 0px 0px 5px rgba(255, 255, 255, 1);
 }
 
 .lstSeries, .addSerie{

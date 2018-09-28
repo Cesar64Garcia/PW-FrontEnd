@@ -28,16 +28,13 @@ class CustomNavbar extends React.Component {
 		let classNav = 'all-transition custom-nav' + (this.props.location.pathname === '/' ? '' : '-dark')
 		return(
 			<Navbar id="navbar" className={classNav} fixed="top" dark expand="md">
+				<NavbarToggler onClick={this.toggle} />
 				<NavLink to="/" className="navbar-brand">
 					<img className="logo" src={Logo} alt="logo"/>
-					<span className="align-middle">DC Series</span>
+					<span className="align-middle cool-link">DC Series</span>
 				</NavLink>
-				<NavbarToggler onClick={this.toggle} />
 				<Collapse isOpen={this.state.isOpen} navbar>
-					<Nav className="ml-auto" navbar>
-						<NavItem>
-							<NavLink to="/" className="nav-link cool-link">Inicio</NavLink>
-						</NavItem>
+					<Nav className="mr-auto" navbar>
 						<NavItem>
 							<NavLink to="/series" className="nav-link cool-link">Series</NavLink>
 						</NavItem>

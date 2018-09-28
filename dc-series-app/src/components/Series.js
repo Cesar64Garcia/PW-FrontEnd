@@ -2,11 +2,10 @@ import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
 import {deleteSerie} from '../actions/seriesActions';
-import DeleteImg from '../images/delete.png';
-import UpdateImg from '../images/edit.png';
 import Logo from '../images/logo2.png';
 import { confirmAlert } from 'react-confirm-alert'; 
 import 'react-confirm-alert/src/react-confirm-alert.css' // Import css
+import { Row, Col } from 'reactstrap';
 
 import '../css/lst.css'
 
@@ -25,7 +24,7 @@ class Series extends Component{
 			  }
 			]
 		})
-		//this.props.deleteSerie(id)
+		
         this.props.history.push('./Series')
     }
 	
@@ -36,25 +35,19 @@ class Series extends Component{
 			series.map(serie => {
 				let styles = {backgroundImage: 'url(' + serie.portada + ')'}
 				return (
-					<div className="special-col col-lg-3 col-md-4 col-sm-6 col6" key={serie.id}>
+					<Col xs="6" sm="6" md="4" lg="3" className="special-col" key={serie.id}>
 						<div className="lst-img-wrapper" style={styles}>
-							<div className="lst-img-intern all-transition">
-								<div className="text-right">
-									<img src={DeleteImg} alt="delete-btn" className="delete-btn all-transition" onClick={() => {this.handleDelete(serie.id)}}/>
-									<Link to={'/' + serie.id}>
-										<img src={UpdateImg} alt="update-btn" className="update-btn all-transition"/>
-									</Link>
+							<Link to={'/' + serie.id}>
+								<div className="lst-img-intern all-transition">
+										<div className="text-center season-title">
+											{serie.serie}
+											<br/>
+											{serie.temporada}
+										</div>
 								</div>
-								<Link to={'/' + serie.id}>
-									<div className="text-center season-title">
-										{serie.serie}
-										<br/>
-										{serie.temporada}
-									</div>
-								</Link>
-							</div>
+							</Link>
 						</div>
-					</div>
+					</Col>
 				)
 			})
 		) : (
@@ -69,9 +62,9 @@ class Series extends Component{
 						Listado
 					</h1>
 				</div>
-				<div className="lstSeries row">
+				<Row className="lstSeries">
 					{seriesList}
-				</div>
+				</Row>
 			</section>
 		)
 	}

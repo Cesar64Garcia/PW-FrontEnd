@@ -56,7 +56,7 @@ class AgregarSerie extends Component{
 									<Input className="form-control" id="temporada" type="text" placeholder="Season XX" onChange={this.handleOnChange}/>
 								</FormGroup>
 								<FormGroup>
-									<Label for="capitulos">Temporada</Label>
+									<Label for="capitulos">Capitulos</Label>
 									<Input className="form-control" id="capitulos" type="number" placeholder="23" onChange={this.handleOnChange}/>
 								</FormGroup>
 								<FormGroup>

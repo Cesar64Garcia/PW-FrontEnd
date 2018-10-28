@@ -52,19 +52,19 @@ class AgregarSerie extends Component{
 								</FormGroup>
 								<FormGroup>
 									<Label for="temporada">Temporada</Label>
-									<Input className="form-control" id="temporada" type="text" placeholder="Season XX" onChange={this.handleOnChange}/>
+									<Input className="form-control" id="temporada" type="text" placeholder="Season XX" onChange={this.handleOnChange} required/>
 								</FormGroup>
 								<FormGroup>
 									<Label for="capitulos">Capitulos</Label>
-									<Input className="form-control" id="capitulos" type="number" placeholder="23" onChange={this.handleOnChange}/>
+									<Input className="form-control" id="capitulos" type="number" placeholder="23" onChange={this.handleOnChange} required/>
 								</FormGroup>
 								<FormGroup>
 									<Label for="portada">Portada</Label>
-									<Input className="form-control" id="portada" type="text" placeholder="https://www.example.com/image.png" onChange={this.handleOnChange} value={this.state.portada}/>
+									<Input className="form-control" id="portada" type="text" placeholder="https://www.example.com/image.png" onChange={this.handleOnChange} value={this.state.portada} required/>
 								</FormGroup>
 								<FormGroup>
 									<Label for="body">Descripción</Label>
-									<textarea  className="form-control" id="body" placeholder="..." rows="3" onChange={this.handleOnChange}></textarea>
+									<textarea className="form-control" id="body" placeholder="..." rows="3" onChange={this.handleOnChange} required></textarea>
 								</FormGroup>
 								<FormGroup>
 									<Button id="submit" type="submit" color="primary">Guardar</Button>

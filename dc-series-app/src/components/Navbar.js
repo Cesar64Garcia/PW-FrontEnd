@@ -36,10 +36,10 @@ class CustomNavbar extends React.Component {
 				<Collapse isOpen={this.state.isOpen} navbar>
 					<Nav className="mr-auto" navbar>
 						<NavItem>
-							<NavLink to="/series" className="nav-link cool-link">Series</NavLink>
+							<NavLink to="/Series" className="nav-link cool-link">Series</NavLink>
 						</NavItem>
 						<NavItem>
-							<NavLink to="/agregar" className="nav-link cool-link">Agregar</NavLink>
+							<NavLink to="/Agregar" className="nav-link cool-link">Agregar</NavLink>
 						</NavItem>
 					</Nav>
 				</Collapse>

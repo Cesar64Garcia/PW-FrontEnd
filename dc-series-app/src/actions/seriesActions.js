@@ -1,10 +1,12 @@
 import axios from 'axios'
 
 export const GET_SEASONS = 'GET_SEASONS'
+export const GET_SEASON = 'GET_SEASON'
 export const ADD_SEASON = 'ADD_SEASON'
 export const DELETE_SEASON = 'DELETE_SEASON'
 export const UPDATE_SEASON = 'UPDATE_SEASON'
 export const ERROR_GET_SEASONS = 'ERROR_GET_SEASONS'
+export const ERROR_GET_SEASON = 'ERROR_GET_SEASON'
 export const ERROR_ADD_SEASONS = 'ERROR_ADD_SEASONS'
 export const ERROR_UPDATE_SEASONS = 'ERROR_UPDATE_SEASONS'
 export const ERROR_DELETE_SEASONS = 'ERROR_DELETE_SEASONS'
@@ -28,6 +30,26 @@ export const getSeasons = () => {
             }
         })
         
+    }
+}
+
+export const getSeason = (id) => {
+    return (dispatch, getState) => {
+        axios.get(apiURI + id)
+            .then((response) => {
+                if (response.status === 200) {
+                    dispatch({
+                        type: GET_SEASON,
+                        actualSerie: response.data[0]
+                    })
+                } else {
+                    dispatch({
+                        type: ERROR_GET_SEASON,
+                        message: 'Unknown error'
+                    })
+                }
+            })
+
     }
 }
 

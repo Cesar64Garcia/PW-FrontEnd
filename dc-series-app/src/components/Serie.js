@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
-import {updateSerie, deleteSerie} from '../actions/seriesActions';
+import {getSeason, updateSerie, deleteSerie} from '../actions/seriesActions';
 import Logo from '../images/logo2.png';
 import LogoArrow from '../images/arrow.png';
 import LogoFlash from '../images/flash.png';
@@ -11,6 +11,18 @@ import { confirmAlert } from 'react-confirm-alert';
 import 'react-confirm-alert/src/react-confirm-alert.css' // Import css
 
 class Serie extends Component{  
+    constructor(props) {
+        super(props);
+        this.props.getSeason(props.match.params.serie_id);
+    }
+
+    componentWillReceiveProps(nextProps) {
+        // You don't have to do this check first, but it can help prevent an unneeded render
+        if (nextProps.serie !== this.state) {
+            this.setState(nextProps.serie);
+        }
+    }
+
     state = this.props.serie;
 
 	handleOnChange = (e) => {
@@ -23,17 +35,6 @@ class Serie extends Component{
 		e.preventDefault();
         this.props.updateSerie(this.state);
         this.props.history.push('./Series')
-        
-        //confirmAlert({
-		//	title: 'Actualización',
-		//	message: 'La actualización se realizo correctamente',
-		//	buttons: [
-        //        {
-        //            label: 'Regresar',
-        //            onClick: () => this.props.history.push('./Series')
-        //        }
-		//	]
-		//})
     }
     
     handleReturn = (e) => {
@@ -52,7 +53,7 @@ class Serie extends Component{
                 {
                     label: 'Si',
                     onClick: () => {
-                        this.props.deleteSerie(this.state._id)
+                        this.props.deleteSerie(this.props.serie._id)
                         this.props.history.push('./Series')
                     }
                 }
@@ -61,38 +62,43 @@ class Serie extends Component{
     }
 
     render() {
-        let styles = {backgroundImage: 'url(' + this.state.portada + ')'}
-        let imgLogo, classLogo
-        
-        switch (this.state.serie) {
-            case 'Arrow':
-                imgLogo = <img className="logo" src={LogoArrow} alt="logo"/>
-                classLogo = 'arrow-title';
-                break;
-            case 'The Flash':
-                imgLogo = <img className="logo" src={LogoFlash} alt="logo"/>
-                classLogo = 'flash-title';
-                break;
-            case 'Supergirl':
-                imgLogo = <img className="logo" src={LogoSuper} alt="logo"/>
-                classLogo = 'supergirl-title';
-                break;
-            case 'Batwoman':
-                imgLogo = <img className="logo" src={LogoBatwoman} alt="logo"/>
-                classLogo = 'batwoman-title';
-                break;
-            default:
-                imgLogo = <img className="logo" src={Logo} alt="logo"/>
-                classLogo = 'dc-title';
-                break;
-        }
+        let styles,imgLogo, classLogo
 
-        return this.props.serie ? (
+        const serie = this.state;
+
+        if (serie){
+            styles = {backgroundImage: 'url(' + serie.portada + ')'}
+            
+            switch (serie.serie) {
+                case 'Arrow':
+                    imgLogo = <img className="logo" src={LogoArrow} alt="logo"/>
+                    classLogo = 'arrow-title';
+                    break;
+                case 'The Flash':
+                    imgLogo = <img className="logo" src={LogoFlash} alt="logo"/>
+                    classLogo = 'flash-title';
+                    break;
+                case 'Supergirl':
+                    imgLogo = <img className="logo" src={LogoSuper} alt="logo"/>
+                    classLogo = 'supergirl-title';
+                    break;
+                case 'Batwoman':
+                    imgLogo = <img className="logo" src={LogoBatwoman} alt="logo"/>
+                    classLogo = 'batwoman-title';
+                    break;
+                default:
+                    imgLogo = <img className="logo" src={Logo} alt="logo"/>
+                    classLogo = 'dc-title';
+                    break;
+            }
+        }
+        
+        return serie ? (
             <section className="container section2">
         		<div className="text-center">
 					<h1 className={'align-middle custom-title ' + classLogo}>
                         {imgLogo}
-                        {this.state.serie}
+                        {serie.serie}
                     </h1>
         		</div>
         		<div className="addSerie">
@@ -104,7 +110,7 @@ class Serie extends Component{
                             <div className="special-col col-lg-9 col-md-8 col-sm-6 col-12">
                                 <FormGroup>
                                     <Label for="serie">Serie</Label>
-                                    <select className="form-control" id="serie" onChange={this.handleOnChange} value={this.state.serie}>
+                                    <select className="form-control" id="serie" onChange={this.handleOnChange} value={serie.serie}>
                                         <option value='The Flash'>The Flash</option>
                                         <option value='Arrow'>Arrow</option>
                                         <option value='Supergirl'>Supergirl</option>
@@ -114,19 +120,19 @@ class Serie extends Component{
                                 </FormGroup>
                                 <FormGroup>
                                     <Label for="temporada">Temporada</Label>
-                                    <Input className="form-control" id="temporada" type="text" placeholder="Season XX" onChange={this.handleOnChange} value={this.state.temporada}/>
+                                    <Input className="form-control" id="temporada" type="text" placeholder="Season XX" onChange={this.handleOnChange} value={serie.temporada}/>
                                 </FormGroup>
                                 <FormGroup>
                                     <Label for="capitulos">Capitulos</Label>
-                                    <Input className="form-control" id="capitulos" type="number" placeholder="23" onChange={this.handleOnChange} value={this.state.capitulos}/>
+                                    <Input className="form-control" id="capitulos" type="number" placeholder="23" onChange={this.handleOnChange} value={serie.capitulos}/>
                                 </FormGroup>
                                 <FormGroup>
                                     <Label for="portada">Portada</Label>
-                                    <Input className="form-control" id="portada" type="text" placeholder="https://www.example.com/image.png" onChange={this.handleOnChange} value={this.state.portada}/>
+                                    <Input className="form-control" id="portada" type="text" placeholder="https://www.example.com/image.png" onChange={this.handleOnChange} value={serie.portada}/>
                                 </FormGroup>
                                 <FormGroup>
                                     <Label for="body">Descripción</Label>
-                                    <textarea  className="form-control" id="body" placeholder="..." rows="3" onChange={this.handleOnChange} value={this.state.body}></textarea>
+                                    <textarea  className="form-control" id="body" placeholder="..." rows="3" onChange={this.handleOnChange} value={serie.body}></textarea>
                                 </FormGroup>
                                 <FormGroup className="text-left">
                                     <Button id="return" color="secondary" onClick={this.handleReturn}>Regresar</Button>
@@ -139,17 +145,16 @@ class Serie extends Component{
         		</div>
     		</section>
         ) : (
-            <div className="container">
+            <div className="container section2">
                 No se encontro la serie buscada...
             </div>
         )
     } 
 }
     
-const mapStateToProps = (state, ownProps) => {
-    let id = ownProps.match.params.serie_id;
+const mapStateToProps = (state) => {
     return {
-        serie: state.series.find(serie => serie._id === id)
+        serie: state.actualSerie
     }
 }
 
@@ -160,6 +165,9 @@ const mapDispatchToProps = (dispatch) => {
         },
         deleteSerie: (id) => {
             dispatch(deleteSerie(id))
+        },
+        getSeason: (id) => {
+            dispatch(getSeason(id))
         }
 	}
 }

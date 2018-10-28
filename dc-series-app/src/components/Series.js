@@ -35,9 +35,9 @@ class Series extends Component{
 			series.map(serie => {
 				let styles = {backgroundImage: 'url(' + serie.portada + ')'}
 				return (
-					<Col xs="6" sm="6" md="4" lg="3" className="special-col" key={serie.id}>
+					<Col xs="6" sm="6" md="4" lg="3" className="special-col" key={serie._id}>
 						<div className="lst-img-wrapper" style={styles}>
-							<Link to={'/' + serie.id}>
+							<Link to={'/' + serie._id}>
 								<div className="lst-img-intern all-transition">
 										<div className="text-center season-title">
 											{serie.serie}

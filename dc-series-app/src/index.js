@@ -3,24 +3,22 @@ import ReactDOM from 'react-dom';
 import './css/index.css';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
-import {createStore} from 'redux';
+import { createStore, applyMiddleware} from 'redux';
 import {Provider} from 'react-redux';
 import rootReducer from './reducers/rootReducer';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {loadState, saveState} from './localStorage'
-
-const persistedState = loadState();
+import thunk from 'redux-thunk'
 
 const store = createStore(
     rootReducer,
-    persistedState
+    applyMiddleware(thunk)
 );
 
-store.subscribe(() => {
-    saveState({
-        series: store.getState().series
-    });
-});
+//store.subscribe(() => {
+//    saveState({
+//        series: store.getState().series
+//    });
+//});
 
 ReactDOM.render(<Provider store={store}><App /></Provider>, document.getElementById('root'));
 registerServiceWorker();

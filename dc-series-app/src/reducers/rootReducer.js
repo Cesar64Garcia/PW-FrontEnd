@@ -1,32 +1,32 @@
-const rootReducer = (state = [], action) => {
+import {GET_SEASONS, ADD_SEASON, UPDATE_SEASON, DELETE_SEASON} from '../actions/seriesActions'
+
+const initState = {
+    series: []
+}
+
+const rootReducer = (state = initState, action) => {
     let newSeries
     switch(action.type) {
-        case 'DELETE_SEASON':
-            newSeries = state.series.filter(serie => serie.id !== action.id);
-            return {
-                ...state,
-                series: newSeries
-            }
-        case 'ADD_SEASON':
+        case GET_SEASONS:
+            return Object.assign({}, state, {series: action.series})
+        case ADD_SEASON:
             newSeries = [
                 ...state.series,
-                {
-                    id: action.id,
-                    serie: action.serie,
-                    capitulos: action.capitulos,
-                    temporada: action.temporada,
-                    portada: action.portada,
-                    body: action.body
-                }
+                action.serie
             ]
             return {
                 ...state,
                 series: newSeries
             }
-        case 'UPDATE_SEASON': 
+        case DELETE_SEASON:
+            newSeries = state.series.filter(serie => serie._id !== action.id);
+            return {
+                ...state,
+                series: newSeries
+            }
+        case UPDATE_SEASON: 
             newSeries = state.series
-            let index
-            index = newSeries.map(serie => serie.id).indexOf(action.serie.id);
+            const index = newSeries.map(serie => serie._id).indexOf(action.serie._id);
             newSeries[index] = action.serie
             return {
                 ...state,

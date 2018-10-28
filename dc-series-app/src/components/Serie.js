@@ -11,14 +11,7 @@ import { confirmAlert } from 'react-confirm-alert';
 import 'react-confirm-alert/src/react-confirm-alert.css' // Import css
 
 class Serie extends Component{  
-    state = {
-        id: this.props.serie.id,
-        serie: this.props.serie.serie,
-		temporada: this.props.serie.temporada,
-		portada: this.props.serie.portada,
-		body: this.props.serie.body,
-		capitulos: this.props.serie.capitulos
-    }
+    state = this.props.serie;
 
 	handleOnChange = (e) => {
 		this.setState({
@@ -29,20 +22,18 @@ class Serie extends Component{
 	handleSubmit = (e) => {
 		e.preventDefault();
         this.props.updateSerie(this.state);
+        this.props.history.push('./Series')
         
-        confirmAlert({
-			title: 'Actualización',
-			message: 'La actualización se realizo correctamente',
-			buttons: [
-                {
-                    label: 'Ok',
-                },
-                {
-                    label: 'Regresar',
-                    onClick: () => this.props.history.push('./Series')
-                }
-			]
-		})
+        //confirmAlert({
+		//	title: 'Actualización',
+		//	message: 'La actualización se realizo correctamente',
+		//	buttons: [
+        //        {
+        //            label: 'Regresar',
+        //            onClick: () => this.props.history.push('./Series')
+        //        }
+		//	]
+		//})
     }
     
     handleReturn = (e) => {
@@ -53,16 +44,17 @@ class Serie extends Component{
         confirmAlert({
 			title: 'Alerta',
 			message: '¿Esta seguro de eliminar?',
-			buttons: [
+            buttons: [
+                {
+                    label: 'No',
+                    color: 'grey'
+                },
                 {
                     label: 'Si',
                     onClick: () => {
-                        this.props.deleteSerie(this.state.id)
+                        this.props.deleteSerie(this.state._id)
                         this.props.history.push('./Series')
                     }
-                },
-                {
-                    label: 'No'
                 }
 			]
         })
@@ -157,7 +149,7 @@ class Serie extends Component{
 const mapStateToProps = (state, ownProps) => {
     let id = ownProps.match.params.serie_id;
     return {
-        serie: state.series.find(serie => serie.id === id)
+        serie: state.series.find(serie => serie._id === id)
     }
 }
 

@@ -22,7 +22,6 @@ class AgregarSerie extends Component{
 
 	handleSubmit = (e) => {
 		e.preventDefault();
-		console.log(this.state)
 		this.props.addSerie(this.state);
 		this.props.history.push('./Series')
 	}
@@ -81,9 +80,7 @@ class AgregarSerie extends Component{
 
 const mapDispatchToProps = (dispatch) => {
 	return {
-		addSerie: (serie) => {
-			dispatch(addSerie(serie))
-		}
+		addSerie: (serie) => dispatch(addSerie(serie))
 	}
 }
 

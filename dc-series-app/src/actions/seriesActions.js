@@ -15,6 +15,7 @@ const apiURI = 'http://localhost:3333/api/v1/series/'
 
 export const getSeasons = () => {
     return (dispatch, getState) => {
+        console.log('ingreso a get')
         axios.get(apiURI)
         .then((response) => {
             if (response.status === 200) {

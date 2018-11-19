@@ -120,19 +120,19 @@ class Serie extends Component{
                                 </FormGroup>
                                 <FormGroup>
                                     <Label for="temporada">Temporada</Label>
-                                    <Input className="form-control" id="temporada" type="text" placeholder="Season XX" onChange={this.handleOnChange} value={serie.temporada}/>
+                                    <Input className="form-control" id="temporada" type="text" placeholder="Season XX" onChange={this.handleOnChange} value={serie.temporada} required/>
                                 </FormGroup>
                                 <FormGroup>
                                     <Label for="capitulos">Capitulos</Label>
-                                    <Input className="form-control" id="capitulos" type="number" placeholder="23" onChange={this.handleOnChange} value={serie.capitulos}/>
+                                    <Input className="form-control" id="capitulos" type="number" placeholder="23" onChange={this.handleOnChange} value={serie.capitulos} required/>
                                 </FormGroup>
                                 <FormGroup>
                                     <Label for="portada">Portada</Label>
-                                    <Input className="form-control" id="portada" type="text" placeholder="https://www.example.com/image.png" onChange={this.handleOnChange} value={serie.portada}/>
+                                    <Input className="form-control" id="portada" type="text" placeholder="https://www.example.com/image.png" onChange={this.handleOnChange} value={serie.portada} required/>
                                 </FormGroup>
                                 <FormGroup>
                                     <Label for="body">Descripción</Label>
-                                    <textarea  className="form-control" id="body" placeholder="..." rows="3" onChange={this.handleOnChange} value={serie.body}></textarea>
+                                    <textarea className="form-control" id="body" placeholder="..." rows="3" onChange={this.handleOnChange} value={serie.body} required></textarea>
                                 </FormGroup>
                                 <FormGroup className="text-left">
                                     <Button id="return" color="secondary" onClick={this.handleReturn}>Regresar</Button>

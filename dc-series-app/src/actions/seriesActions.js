@@ -11,11 +11,11 @@ export const ERROR_ADD_SEASONS = 'ERROR_ADD_SEASONS'
 export const ERROR_UPDATE_SEASONS = 'ERROR_UPDATE_SEASONS'
 export const ERROR_DELETE_SEASONS = 'ERROR_DELETE_SEASONS'
 
-const apiURI = 'http://localhost:3333/api/v1/series/'
+const apiURI = 'http://dc-series-backend-46a652664a95f2e7.elb.us-east-2.amazonaws.com:3333/api/v1/series/';  
 
 export const getSeasons = () => {
     return (dispatch, getState) => {
-        console.log('ingreso a get')
+        console.log('ingreso a get' + apiURI)
         axios.get(apiURI)
         .then((response) => {
             if (response.status === 200) {
